@@ -4,7 +4,7 @@ title: projects
 permalink: /projects/
 description: Things I have worked on and/or playing with rn.
 nav: true
-display_categories: [work, fun]
+display_categories: [school, fun]
 horizontal: false
 ---
 <div class="projects">
