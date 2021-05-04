@@ -19,6 +19,6 @@ social: false  # includes social icons at the bottom of the page
 
 Hello 👋  I am a software developer passionate about machine learning and all things computer vision-related.
 
-I am a uWaterloo alumni with a MMath in Computer Science and BMath in Actuarial Science & Statistics.
+I graduated from the Univerity of Waterloo with a M.Math. in Computer Science and a B.Math. in Actuarial Science & Statistics.
 
 As a "retired" actuary, I try to be up-to-date with changes in the insurance industry, so I may post things insurance-related occasionally. Stay tuned!
