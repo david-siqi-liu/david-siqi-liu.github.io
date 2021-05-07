@@ -29,7 +29,7 @@ In open-source software, code review is done in a collaborative setting where <m
 - Junior reviewers tend to agree with experienced reviewers?
 - Developers who collaborate more often tend to agree with each other?
 
-As such, as part of my software analytics course at uWaterloo taught by Prof. Shane McIntosh, I conducted a case study on <a href="https://www.openstack.org/">OpenStack</a> to understand <mark>how visible information may influence the evaluation decision of a reviewer and ultimately, the quality of the approved patches</mark>.
+As such, as part of my software analytics course at uWaterloo taught by Prof. Shane McIntosh, I conducted a case study on <a href="https://www.openstack.org/" target="_blank">OpenStack</a> to understand <mark>how visible information may influence the evaluation decision of a reviewer and ultimately, the quality of the approved patches</mark>.
 
 My results show that:
 
@@ -37,7 +37,7 @@ My results show that:
 2. Patch quality is not as affected by such review dynamics 🥰
 3. When a patch is smaller and less complex, it is more likely to receive a positive vote and is less likely to cause defects in the future. So, keep your commits small and push often!
 
-Replication package is available <a href="https://github.com/david-siqi-liu/review-dynamics-openstack">here</a>.
+Replication package is available <a href="https://github.com/david-siqi-liu/review-dynamics-openstack" target="_blank">here</a>.
 
 ***
 
@@ -84,7 +84,7 @@ Some observations:
 
 The first analysis I did was understanding how visible information, such as prior votes and comments, affects the evaluation decision of a reviewer.
 
-I used <a href="https://pydriller.readthedocs.io/en/latest/">PyDriller</a> to mine patches and extract their characteristics from Git repositories. For each patch, I collected its review dynamics data using the <a href="https://docs.opendev.org/opendev/system-config/latest/gerrit.html">Gerrit REST API</a>. Lastly, I computed reviewer characteristics and assign them to each review.
+I used <a href="https://pydriller.readthedocs.io/en/latest/" target="_blank">PyDriller</a> to mine patches and extract their characteristics from Git repositories. For each patch, I collected its review dynamics data using the <a href="https://docs.opendev.org/opendev/system-config/latest/gerrit.html" target="_blank">Gerrit REST API</a>. Lastly, I computed reviewer characteristics and assign them to each review.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0 text-center">
@@ -95,7 +95,7 @@ I used <a href="https://pydriller.readthedocs.io/en/latest/">PyDriller</a> to mi
 Data extraction pipeline
 </div>
 
-I assigned the variables into three data dimensions - `patch`, `dynamic`, and `reviewer`. A detailed list of variables and their descriptions can be found <a href="https://github.com/david-siqi-liu/review-dynamics-openstack/blob/main/report/supplementary_tables.pdf">here</a>.
+I assigned the variables into three data dimensions - `patch`, `dynamic`, and `reviewer`. A detailed list of variables and their descriptions can be found <a href="https://github.com/david-siqi-liu/review-dynamics-openstack/blob/main/report/supplementary_tables.pdf" target="_blank">here</a>.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0 text-center">
@@ -106,7 +106,7 @@ I assigned the variables into three data dimensions - `patch`, `dynamic`, and `r
 Variables for analyzing evaluation decision
 </div>
 
-I conducted correlation analysis to remove highly correted variables. The metric I used is **Spearman’s rank correlation coefficient** ($$\rho$$). For each pair of variables with an absolute correlation coefficient greater than 0.7, I removed one of the variables from our study. For consistency, I used the <a href="https://rdrr.io/github/software-analytics/Rnalytica/man/AutoSpearman.html">AutoSpearman</a> function in R.
+I conducted correlation analysis to remove highly correted variables. The metric I used is **Spearman’s rank correlation coefficient** ($$\rho$$). For each pair of variables with an absolute correlation coefficient greater than 0.7, I removed one of the variables from our study. For consistency, I used the <a href="https://rdrr.io/github/software-analytics/Rnalytica/man/AutoSpearman.html" target="_blank">AutoSpearman</a> function in R.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0 text-center">
@@ -182,7 +182,7 @@ In addition, the patch author’s experience level and core developer status als
 
 ## Software Quality
 
-I conducted another set of analyses, focusing on the approved patches and their tendency to induce fixes in the future. A patch is fix-inducing if there is a future patch that is bug fixing and modifies the same line (based on the <a href="https://dl.acm.org/doi/10.1145/1082983.1083147">SZZ algorithm</a>).
+I conducted another set of analyses, focusing on the approved patches and their tendency to induce fixes in the future. A patch is fix-inducing if there is a future patch that is bug fixing and modifies the same line (based on the <a href="https://dl.acm.org/doi/10.1145/1082983.1083147" target="_blank">SZZ algorithm</a>).
 
 <mark>Review dynamics do not have as strong of a relationship with software quality as patch characteristics do.</mark> With 62% of the total LR captured, `patch` data dimension has the most explanatory power concerning software quality. `Average Prior Commits Age` is the most significant variable overall. Its positive sign indicates that a patch is more prone to defects when it modifies lines that haven’t been modified for a long time. Other variables, such as `# Lines Added` and `Entropy`, suggest that a patch is more prone to defects when its modifications are larger and more complex. Lastly, I found that whether the author is experienced or not is not statistically significantly associated with the patch quality.
 
