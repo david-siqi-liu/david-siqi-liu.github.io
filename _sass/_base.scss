@@ -330,7 +330,11 @@ footer.sticky-bottom {
 
     .card {
       img {
+        object-fit: contain;
         width: 100%;
+        height: 200px;
+        margin-left: auto;
+        margin-right: auto;
       }
       .card-title {
         color: $black-color;
