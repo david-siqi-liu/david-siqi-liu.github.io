@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Review Dynamics in OpenStack
+title: Code Review Dynamics and Software Quality
 description: A case study on OpenStack to understand how visible information (e.g., prior votes and comments) affects code review decision and the quality of approved patches.
 img: /assets/img/openstack-logo.jpeg
 importance: 1
