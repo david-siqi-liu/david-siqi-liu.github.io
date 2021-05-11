@@ -15,6 +15,7 @@ profile:
 news: false  # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: false  # includes social icons at the bottom of the page
+clustrmap: true # includes ClustrMap
 ---
 
 Hello 👋  I am a software developer passionate about machine learning and all things computer vision-related.
