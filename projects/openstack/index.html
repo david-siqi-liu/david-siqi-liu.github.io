@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>David (Siqi) Liu | Code Review Dynamics and Software Quality</title>
+<meta name="description" content="My portfolio. Based on [*folio](https://github.com/bogoli/-folio) design.
+">
+
+<!-- Open Graph -->
+
+
+<!-- Bootstrap & MDB -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" integrity="sha512-RO38pBRxYH3SoOprtPTD86JFOclM51/XTIdEPh5j8sj4tp8jmQIx26twG52UaLi//hQldfrh7e51WzP9wuP32Q==" crossorigin="anonymous" />
+
+<!-- Fonts & Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"  integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+<!-- Code Syntax Highlighting -->
+<link rel="stylesheet" href="https://gitcdn.xyz/repo/jwarby/jekyll-pygments-themes/master/github.css" />
+
+<!-- Styles -->
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
+
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<link rel="canonical" href="/projects/openstack/">
+
+<!-- JQuery -->
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+
+<!-- Theming-->
+
+
+
+
+
+
+    
+<!-- MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex: {
+      tags: 'ams'
+    }
+  };
+</script>
+<script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js"></script>
+<script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+
+  </head>
+
+  <body class="fixed-top-nav ">
+
+    <!-- Header -->
+
+    <header>
+
+    <!-- Nav Bar -->
+    <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+    <div class="container">
+      
+      <a class="navbar-brand title font-weight-lighter" href="https://david-siqi-liu.github.io/">
+       <span class="font-weight-bold">David</span> (Siqi)  Liu
+      </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/">
+              about
+              
+            </a>
+          </li>
+          <!--  -->
+          <!-- Blog -->
+          <!-- <li class="nav-item ">
+            <a class="nav-link" href="/blog/">
+              blog
+              
+            </a>
+          </li>
+           -->
+          <!-- CV -->
+          <li class="nav-item">
+            <a class="nav-link" href="../assets/pdf/Siqi_Liu_Resume_20210510.pdf">
+              resume
+            </a>
+          </li>
+          <!-- Other pages -->
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <li class="nav-item ">
+              <a class="nav-link" href="/projects/">
+                projects
+                
+              </a>
+          </li>
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</header>
+
+
+    <!-- Content -->
+
+    <div class="container mt-5">
+      <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Code Review Dynamics and Software Quality</h1>
+    <p class="post-description">A case study on OpenStack to understand how visible information (e.g., prior votes and comments) affects code review decision and the quality of approved patches.</p>
+  </header>
+
+  <article>
+    <div class="row">
+    <div class="col-sm mt-3 mt-md-0 text-center">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/projects/openstack/cover.jpeg" alt="cover" title="cover" />
+    </div>
+</div>
+<div class="caption">
+Photo by Christina Morillo from Pexels
+</div>
+
+<hr />
+
+<h2 id="overview">Overview</h2>
+
+<p>Code review is an integral part of modern software engineering practice.</p>
+
+<p>In open-source software, code review is done in a collaborative setting where <mark>all review activities are visible to the public, including future reviewers</mark>. This makes us wonder if …</p>
+
+<ul>
+  <li>Future reviewers tend to agree with prior reviewers?</li>
+  <li>Junior reviewers tend to agree with experienced reviewers?</li>
+  <li>Developers who collaborate more often tend to agree with each other?</li>
+</ul>
+
+<p>As such, as part of my software analytics course at uWaterloo taught by Prof. Shane McIntosh, I conducted a case study on <a href="https://www.openstack.org/" target="_blank">OpenStack</a> to understand <mark>how visible information may influence the evaluation decision of a reviewer and ultimately, the quality of the approved patches</mark>.</p>
+
+<p>My results show that:</p>
+
+<ol>
+  <li>Reviewers are more likely to provide a positive vote when there are existing positive votes 😱</li>
+  <li>Patch quality is not as affected by such review dynamics 🥰</li>
+  <li>When a patch is smaller and less complex, it is more likely to receive a positive vote and is less likely to cause defects in the future. So, keep your commits small and push often!</li>
+</ol>
+
+<p>Replication package is available <a href="https://github.com/david-siqi-liu/review-dynamics-openstack" target="_blank">here</a>.</p>
+
+<hr />
+
+<h2 id="openstack">OpenStack</h2>
+
+<p>OpenStack is a free, open standard cloud operating system. Since its inception in 2010 as a joint project of Rackspace Hosting and NASA, OpenStack has grown substantially and is now being actively maintained by more than 500 companies and thousands of community volunteers. OpenStack is broken up into service areas and projects. As of now, there are 29 individual projects within OpenStack. Even though each project is managed and developed independently, they share common development infrastructures.</p>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0 text-center">
+        <img class="img-fluid rounded" src="/assets/img/projects/openstack/code-review-process.png" alt="code-review-process" title="code-review-process" width="500" />
+    </div>
+</div>
+<div class="caption">
+OpenStack/nova code review process flowchart
+</div>
+
+<p>The development workflow at OpenStack is centred around Gerrit, which uses the idea of <u>patches rather than pull requests</u>. A quick rundown on how the code review process works:</p>
+
+<ol>
+  <li>To propose changes to a project, an author starts by cloning the <em>master</em> branch of the project repository</li>
+  <li>After changes have been made locally, the author can propose the changes to Gerrit using the <em>git-review</em> tool, creating a patch</li>
+  <li>The proposed changes are then picked up by the Continuous Integration (CI) tool (either Zuul or Jenkins), which runs <em>check tests</em> on the changes, while human reviewers review and vote on the patch. Depending on the check test results and the feedback from the reviewers, the patch author may need to amend the changes and propose additional patchsets</li>
+  <li>Once the patch has been approved by both the CI tool and the reviewers, the CI tool runs <em>gate tests</em> to detect any merge conflict before finally merging it into the <em>master</em> branch</li>
+</ol>
+
+<p>For this case study, I selected four core projects within OpenStack:</p>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0 text-center">
+        <img class="img-fluid rounded" src="/assets/img/projects/openstack/studied-projects.png" alt="studied-projects" title="studied-projects" />
+    </div>
+</div>
+<div class="caption">
+</div>
+
+<p>Note that I only used patches submitted from November 2011 to July 2019. This is to eliminate uncertainties from early adoption and to allow enough time for the patches to be reviewed and tested for defects after they have been merged.</p>
+
+<p>Some observations:</p>
+<ul>
+  <li>Nearly all of the patches have multiple reviewers, and the average number of reviewers is quite consistent across the projects</li>
+  <li>Around 90% of the reviews end up with a positive vote, which is expected since patch authors often make multiple amendments with the help of reviewers to get their proposed changes accepted</li>
+  <li>More than half of the patches end up causing defects in the future</li>
+</ul>
+
+<hr />
+
+<h2 id="evaluation-decision">Evaluation Decision</h2>
+
+<p>The first analysis I did was understanding how visible information, such as prior votes and comments, affects the evaluation decision of a reviewer.</p>
+
+<p>I used <a href="https://pydriller.readthedocs.io/en/latest/" target="_blank">PyDriller</a> to mine patches and extract their characteristics from Git repositories. For each patch, I collected its review dynamics data using the <a href="https://docs.opendev.org/opendev/system-config/latest/gerrit.html" target="_blank">Gerrit REST API</a>. Lastly, I computed reviewer characteristics and assign them to each review.</p>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0 text-center">
+        <img class="img-fluid rounded" src="/assets/img/projects/openstack/data-extraction.png" alt="data-extraction" title="data-extraction" />
+    </div>
+</div>
+<div class="caption">
+Data extraction pipeline
+</div>
+
+<p>I assigned the variables into three data dimensions - <code class="language-plaintext highlighter-rouge">patch</code>, <code class="language-plaintext highlighter-rouge">dynamic</code>, and <code class="language-plaintext highlighter-rouge">reviewer</code>. A detailed list of variables and their descriptions can be found <a href="https://github.com/david-siqi-liu/review-dynamics-openstack/blob/main/report/supplementary_tables.pdf" target="_blank">here</a>.</p>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0 text-center">
+        <img class="img-fluid rounded" src="/assets/img/projects/openstack/rq1-variables.png" alt="rq1-variables" title="rq1-variables" />
+    </div>
+</div>
+<div class="caption">
+Variables for analyzing evaluation decision
+</div>
+
+<p>I conducted correlation analysis to remove highly correted variables. The metric I used is <strong>Spearman’s rank correlation coefficient</strong> (\(\rho\)). For each pair of variables with an absolute correlation coefficient greater than 0.7, I removed one of the variables from our study. For consistency, I used the <a href="https://rdrr.io/github/software-analytics/Rnalytica/man/AutoSpearman.html" target="_blank">AutoSpearman</a> function in R.</p>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0 text-center">
+        <img class="img-fluid rounded" src="/assets/img/projects/openstack/rq1-spearman.png" alt="rq1-spearman" title="rq1-spearman" />
+    </div>
+</div>
+<div class="caption">
+AutoSpearman correlation graph
+</div>
+
+<p>I used <strong>Linear Mixed-Effects Model</strong> as the base model type. Linear mixed-effect model is an extension to simple linear model to account for both fixed and random effects. This type of model is used when there is a hierarchical structure to the data, in which case the variability in the outcome may come from either within the group or between the groups. In our case, the random-effects/groups are the reviewers. For example, some reviewers may be more lenient and tend to give more positive votes than other reviewers.</p>
+
+<p>Since my goal was to predict whether a vote is positive or not, I used <code class="language-plaintext highlighter-rouge">family='binomial'</code> in my model configuration. To add the random effect, I included <code class="language-plaintext highlighter-rouge">(1|ReviewerID)</code> in the model formulas.
+I fitted five models to explore the explanatory power of each of the three data dimensions. The full model includes variables from all three data dimensions and the random-effect variable. Three models, each excluding one of the data dimensions, were also fitted. Lastly, I fitted a null model which only contains the random-effect variable.</p>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0 text-center">
+        <img class="img-fluid rounded" src="/assets/img/projects/openstack/rq1-formulas.png" alt="rq1-formulas" title="rq1-formulas" />
+    </div>
+</div>
+<div class="caption">
+Linear mixed-effects model formulas
+</div>
+
+<p>For evaluation, I used <strong>Area Under the ROC Curve (AUC)</strong> scores. Both the <em>Ex-Reviewer</em> model and the <em>Full</em> model were able to achieve an AUC score that was 14% higher than the <em>Null</em> model. This implies that even if I excluded all of the <code class="language-plaintext highlighter-rouge">reviewer</code> variables, the model performance wouldn’t have deteriorated as much.</p>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0 text-center">
+        <img class="img-fluid rounded" src="/assets/img/projects/openstack/rq1-auc.png" alt="rq1-auc" title="rq1-auc" />
+    </div>
+</div>
+<div class="caption">
+</div>
+
+<p>I conducted <strong>Likelihood-Ratio (LR)</strong> tests to evaluate the explanatory power of each of the data dimensions. While all three data dimensions were statistically significant, <code class="language-plaintext highlighter-rouge">dynamic</code> variables offered significantly more explanatory ability than variables in the other two data dimensions.</p>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0 text-center">
+        <img class="img-fluid rounded" src="/assets/img/projects/openstack/rq1-lr.png" alt="rq1-lr" title="rq1-lr" />
+    </div>
+</div>
+<div class="caption">
+</div>
+
+<p>Based on results from the two tests above, I selected the <em>Ex-Reviewer</em> model to be the final model. I calculated the <strong>Wald statistics</strong> for each variable in our final model. The larger the Wald statistics a variable possesses, the stronger its relationship with the target variable.</p>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0 text-center">
+        <img class="img-fluid rounded" src="/assets/img/projects/openstack/rq1-wald.png" alt="rq1-wald" title="rq1-wald" />
+    </div>
+</div>
+<div class="caption">
+</div>
+
+<p>To examine the generalizability of the final model, I tested it against the validation project. Since I used a mixed-effect model with reviewers being the groups, the model had not seen the reviewers in the validation project and only the fixed-effect variables could have been used for prediction. I achieved an AUC score of 0.73 on the validation project, as opposed to the 0.82 AUC score we saw on the training set. <mark>This implies that there is enough variability among the reviewers that we are unable to form accurate predictions by using the fixed-effect variables alone.</mark></p>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0 text-center">
+        <img class="img-fluid rounded" src="/assets/img/projects/openstack/rq1-roc.png" alt="rq1-roc" title="rq1-roc" />
+    </div>
+</div>
+<div class="caption">
+Receiver operating characteristic (ROC) curves
+</div>
+
+<p><mark>Review dynamics have a stronger relationship with the evaluation decision than patch characteristics do.</mark> Even though the <code class="language-plaintext highlighter-rouge">dynamics</code> data dimension only has 5 variables, it captures 68% of the total LR. Moreover, <code class="language-plaintext highlighter-rouge">% Prior Votes Positive</code> is the most statistically significant variable overall. Its positive sign indicates that it is more likely for a reviewer to provide a positive vote when there are more positive votes among prior votes.</p>
+
+<p><mark>Reviewers are more likely to provide a positive vote when the patch changes are smaller and simpler.</mark> This is evident in the signs in <code class="language-plaintext highlighter-rouge"># Lines Added</code> (-), <code class="language-plaintext highlighter-rouge"># Lines Deleted</code> (+), and <code class="language-plaintext highlighter-rouge">Entropy</code> (-).</p>
+
+<p>In addition, the patch author’s experience level and core developer status also have a positive relationship with the likelihood of receiving a positive vote.</p>
+
+<hr />
+
+<h2 id="software-quality">Software Quality</h2>
+
+<p>I conducted another set of analyses, focusing on the approved patches and their tendency to induce fixes in the future. A patch is fix-inducing if there is a future patch that is bug fixing and modifies the same line (based on the <a href="https://dl.acm.org/doi/10.1145/1082983.1083147" target="_blank">SZZ algorithm</a>).</p>
+
+<p><mark>Review dynamics do not have as strong of a relationship with software quality as patch characteristics do.</mark> With 62% of the total LR captured, <code class="language-plaintext highlighter-rouge">patch</code> data dimension has the most explanatory power concerning software quality. <code class="language-plaintext highlighter-rouge">Average Prior Commits Age</code> is the most significant variable overall. Its positive sign indicates that a patch is more prone to defects when it modifies lines that haven’t been modified for a long time. Other variables, such as <code class="language-plaintext highlighter-rouge"># Lines Added</code> and <code class="language-plaintext highlighter-rouge">Entropy</code>, suggest that a patch is more prone to defects when its modifications are larger and more complex. Lastly, I found that whether the author is experienced or not is not statistically significantly associated with the patch quality.</p>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Code review in open source software is done in a collaborative and transparent setting. However, based on the case study, I found that such visible information may have an impact on the evaluation decisions of the reviewers. I showed empirical evidence that review dynamics, particularly the proportion of prior votes that are positive, are highly correlated with the evaluation decision. On the other hand, these review dynamics have a minor impact on the software quality. The results on patch characteristics suggest that developers should propose less complex patches to improve software quality and the likelihood of receiving positive votes. Furthermore, I showed that due to the variability within the reviewers, my model for evaluation decision may not be generalizable to other projects, even within the same ecosystem. Nevertheless, I believe that the findings would be still of value to practitioners looking to improve their code review processes.</p>
+
+  </article>
+
+</div>
+
+    </div>
+
+    <!-- Footer -->
+
+    
+<footer class="fixed-bottom">
+  <div class="container mt-0">
+    &copy; Copyright 2021 David (Siqi) Liu.
+    Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+
+    
+    
+  </div>
+</footer>
+
+
+
+  </body>
+
+  <!-- Bootsrap & MDB scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.4/umd/popper.min.js" integrity="sha512-eUQ9hGdLjBjY3F41CScH3UX+4JDSI9zXeroz7hJ+RteoCaY+GP/LDoM8AO+Pt+DRFw3nXqsjh9Zsts8hnYv8/A==" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha512-M5KW3ztuIICmVIhjSqXe01oV2bpe248gOxqmlcYrEzAvws7Pw3z6BK0iGbrwvdrUQUhi3eXgtxp5I8PDo9YfjQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js" integrity="sha512-Mug9KHKmroQFMLm93zGrjhibM2z2Obg9l6qFG2qKjXEXkMp/VDkI4uju9m4QKPjWSwQ6O2qzZEnJDEeCw0Blcw==" crossorigin="anonymous"></script>
+
+  
+<!-- Mansory & imagesLoaded -->
+<script defer src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script defer src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script defer src="/assets/js/mansory.js" type="text/javascript"></script>
+
+
+  
+
+
+<!-- Load Common JS -->
+<script src="/assets/js/common.js"></script>
+
+
+</html>
